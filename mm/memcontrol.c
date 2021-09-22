@@ -2798,29 +2798,6 @@ static void tree_events(struct mem_cgroup *memcg, unsigned long *events)
 	}
 }
 
-#ifndef CONFIG_MTK_GMO_RAM_OPTIMIZE
-static unsigned long mem_cgroup_usage(struct mem_cgroup *memcg, bool swap)
-{
-	unsigned long val = 0;
-
-	if (mem_cgroup_is_root(memcg)) {
-		struct mem_cgroup *iter;
-
-		for_each_mem_cgroup_tree(iter, memcg) {
-			val += memcg_page_state(iter, MEMCG_CACHE);
-			val += memcg_page_state(iter, MEMCG_RSS);
-			if (swap)
-				val += memcg_page_state(iter, MEMCG_SWAP);
-		}
-	} else {
-		if (!swap)
-			val = page_counter_read(&memcg->memory);
-		else
-			val = page_counter_read(&memcg->memsw);
-	}
-	return val;
-}
-#else
 static unsigned long mem_cgroup_usage(struct mem_cgroup *memcg, bool swap)
 {
 	unsigned long val;
@@ -2849,7 +2826,6 @@ static unsigned long mem_cgroup_usage(struct mem_cgroup *memcg, bool swap)
 	}
 	return val;
 }
-#endif
 
 enum {
 	RES_USAGE,
@@ -3334,11 +3310,6 @@ static int mem_cgroup_swappiness_write(struct cgroup_subsys_state *css,
 				       struct cftype *cft, u64 val)
 {
 	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
-
-#ifndef CONFIG_MTK_GMO_RAM_OPTIMIZE
-	if (val > 100)
-		return -EINVAL;
-#endif
 
 	if (css->parent)
 		memcg->swappiness = val;
