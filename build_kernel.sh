@@ -105,7 +105,7 @@ zipping() {
 build_kernel() {
   find "$OUTDIR" -name "*-dtb" -name "dtbo.img" -delete
   [[ $LTO == true ]] && echo "CONFIG_LTO_CLANG=y" >> arch/arm64/configs/"$DEFCONFIG"
-  echo "-GenomNEW-OSS-R-$CONFIG" > localversion
+  echo "-$CONFIG" > localversion
   make O="$OUTDIR" ARCH=arm64 "$DEFCONFIG"
   make -j"$PROCS" O="$OUTDIR" \
                   ARCH=arm64 \
