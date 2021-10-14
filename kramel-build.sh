@@ -51,7 +51,7 @@ ZIPNAME="NetErnels"
 
 # Build Author
 # Take care, it should be a universal and most probably, case-sensitive
-AUTHOR="cyberknight777"
+AUTHOR="fhri"
 
 # Architecture
 ARCH=arm64
@@ -81,7 +81,7 @@ PTTG=1
 	if [ $PTTG = 1 ]
 	then
 		# Set Telegram Chat ID
-		CHATID="-1001301508914"
+		CHATID="-1001789371521"
 	fi
 
 # Generate a full DEFCONFIG prior building. 1 is YES | 0 is NO(default)
