@@ -51,7 +51,7 @@ ZIPNAME="NetErnels"
 
 # Build Author
 # Take care, it should be a universal and most probably, case-sensitive
-AUTHOR="fhri"
+AUTHOR="fhri666"
 
 # Architecture
 ARCH=arm64
