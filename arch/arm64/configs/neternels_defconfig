@@ -1,5 +1,5 @@
 CONFIG_CROSS_COMPILE="aarch64-linux-android-"
-CONFIG_LOCALVERSION="-xBoreUp.neternels.rev1.1-early"
+CONFIG_LOCALVERSION="-xBoreUp.neternels.rev1.1"
 CONFIG_DEFAULT_HOSTNAME="kali"
 # CONFIG_FHANDLE is not set
 CONFIG_AUDIT=y
